@@ -1,0 +1,65 @@
+한 컨테이너에 id 가 두개 이상이면 에러 발생
+
+lazy-init true시 해당 Bean 을 미리 생성하지 않고 실제 이용하는 시점(첫 getBean)에 생성
+scope를 singleton 으로 지정했을 때 ! 
+#server Program에서는 의미가 없음, 미리 다 올려놓고 서비스할 준비가 되어있어야 하기 때문
+#client Program에서는 의미가 있음, 전부 생성해서 띄우면 늦기 때문에 필요할때마다 객체 생성
+
+bean 객체 생성 시에 property로 생성하면 
+기본생성자로 생성하며, name 에 맞는 객체의 변수에 직접 값을 setter 메서드로 입력한다.
+
+
+
+AOP (Aspect Oriented Programming)
+┌──────┐ ┌──────┐    ┌────────┐ ┌──────────────────┐ ┌──────────────────┐ 
+│  D   │ │  F   │    │   A    │ │ BoardServiceImpl │ │ MemberServiceImpl│
+├──────┤ ├──────┤    ├────────┤ ├──────────────────┤ ├──────────────────┤
+│test()│ │test()│    │D.test()│ │D.test()		   │ │D.test()			│
+│	   │ │	    │    │	      │ │	    		   │ │   				│
+└──────┘ └──────┘    └────────┘ └──────────────────┘ └──────────────────┘
+
+BoardServiceImpl
+D.test
+
+MemberServiceImpl
+D.test
+
+
+D에서 F 라는 메서드로 바뀌면 
+D를 F로 바꿔줘야한다.
+
+
+
+PointCut : Aspectj 표현식으로 공통 모듈을 적용할 핵심모듈을 찾아오는 것
+
+modifier 리턴타입 패키지명.클래스이름.메서드이름(인자)
+  생략		*	  name  *		*		  *		 ..
+  				  depth ..
+
+* com.kdn.model.biz.*ServiceImpl.search*(..)
+
+
+JoinPoint : PointCut을 통해 찾아온 핵심모듈의 연결지점
+			(핵심모듈 정보 : 메서드이름, 인자, 리턴정보)
+
+Advise : JoinPoint에서 실행 시점을 충고한다.
+
+weaving : Advise를 삽입한다.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

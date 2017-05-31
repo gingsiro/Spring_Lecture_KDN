@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 기본 생성자로 객체 생성하고 Setter 메서드를 통해 injection함
+		 namespace prefix를 통해 사용
+		 1. p 라는 prefix를 위한 namespace 등록
+		 2. Collection, Map, array, properties를 설정 불가
+	 -->
+	 <bean id="board" class="com.kdn.model.domain.Board"
+	 	   p:id="kdn" p:title="처음하는 spring" p:regdate="2017-05-31" />
+</beans>

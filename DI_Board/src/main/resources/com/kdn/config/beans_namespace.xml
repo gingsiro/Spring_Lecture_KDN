@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="boardDao" class="com.kdn.model.dao.BoardDaoImpl" />
+	<bean id="memberDao" class="com.kdn.model.dao.MemberDaoImpl" />
+	
+	<bean id="boardService" class="com.kdn.model.biz.BoardServiceImpl" p:dao-ref="boardDao"/>
+	<bean id="memberService" class="com.kdn.model.biz.MemberServiceImpl"  p:dao-ref="memberDao"/>
+</beans>

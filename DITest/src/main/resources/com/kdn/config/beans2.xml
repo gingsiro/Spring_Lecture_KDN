@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 생성자를 지정해서 객체 생성
+		<bean>태그의 바디에 <constructor-arg>태그를 설정
+		<constructor-arg>태그 하나가 생성자의 인자 하나가 된다.
+			value : 8가지 primitive type 또는 String type의 값을 설정
+			ref : <bean>태그를 통해 미리 등록한 객체의 id 값을 설정
+			index : 인자의 순번을 지정
+					생략 시 작성한 순서대로
+			type : value로 값을 설정할 때 값의 type 을 설정  
+	 -->
+	 
+	<bean id="title" class="java.lang.String">
+		<constructor-arg value="처음하는 spring" />
+	</bean>
+	<bean id="board" class="com.kdn.model.domain.Board">
+		<!-- 클래스 생성자의 인자 순서대로 넣어줘야 좋다. -->
+		<!-- value나 ref 둘중 하나는 꼭 써야한다. -->
+		<constructor-arg value="1" type="int"/>
+		<constructor-arg value="kdn" />
+		<constructor-arg value="title" />
+		<constructor-arg value="2017-05-31" type="java.lang.String"/>
+		<constructor-arg value="잘되나요?" />
+		<!-- 
+		<constructor-arg value="1" index="0"/>
+		<constructor-arg value="title" index="2"/>
+		<constructor-arg value="kdn" index="1"/>
+		<constructor-arg value="2017-05-31" index="3"/>
+		<constructor-arg value="잘되나요?" index="4"/> -->
+	</bean>
+	
+	<!-- [Collection, Map, Properties, Array] Injection -->
+	<bean id="fileBean1" class="com.kdn.model.domain.FileBean">
+		<constructor-arg value="a.txt"/>
+		<constructor-arg value="a.txt"/>
+	</bean>
+	<bean id="fileBean2" class="com.kdn.model.domain.FileBean">
+		<constructor-arg value="b.txt"/>
+		<constructor-arg value="b.txt"/>
+	</bean>
+	<bean id="board2" class="com.kdn.model.domain.Board">
+		<constructor-arg value="1" type="int"/>
+		<constructor-arg value="kdn" />
+		<constructor-arg value="title" />
+		<constructor-arg value="2017-05-31" type="java.lang.String"/>
+		<constructor-arg value="잘되나요?" />
+		<constructor-arg>
+			<list>
+				<ref bean="fileBean1"/>
+				<ref bean="fileBean2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>
