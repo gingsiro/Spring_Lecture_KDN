@@ -9,6 +9,7 @@ public class HelloAOP {
 		Object[] args = jp.getArgs();
 		
 		if(args != null){
+			System.out.println("인자 정보");
 			for (Object arg : args) {
 				System.out.println(arg);
 			}
