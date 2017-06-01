@@ -147,4 +147,8 @@ JSP 프리셋 변경
 <meta charset="${encoding}">
 
 
+퀴즈
+설정은X
+RequestMapping만 낸다.
+요청 url 메서드방식 주고  어느 페이지로 넘기는것
 
