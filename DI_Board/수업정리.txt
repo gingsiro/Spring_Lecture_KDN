@@ -105,5 +105,46 @@ Web browser │  		   │		   │   │┌────────────�
 DispatcherServlet : Spring Container 생성
 					요청 작업을 처리할수 있도록 분기 
 
+///////////// 실기 시험 /////////////
+간단한 css하나
+jsp 에다가 el, jsp 박는거 두개
+
+
+Spring 프로젝트 구조 설명
+src/main/java
+	dao, impl, ...
+src/main/resources
+	xml, ...
+src/main/resources/spring/application-config.xml
+	일반 bean들을 위한 환경설정
+src/main/wabapp/WEB-INF/mvc-config.xml	
+	web을 위한 Bean Configuration
+src/main/webapp
+	WebContents 같은 아이
+	이안에 페이지들을 생성해야함
+
+
+src/main/wabapp/WEB-INF/web.xml
+	dispatcher servlet : *.do 설정으로 모든 요청이 dispatcher servlet을 참고하도록
+	<servlet><init-param>내부에 web에 대한 BeanConfiguration 설정
+	<context-param>에 일반 Bean을 위한 Bean Configuration 설정
+	class-path com.kdn.config로 변경했으니 경로 변경해줌 
+	인코딩 설정 : 
+	
+src/main/wabapp/WEB-INF/mvc-config.xml
+	com.kdn/controller 패키지로 컨트롤러들 생성해줌
+	우클릭 > spring tools > addBean~ 클릭
+	
+SpringExplorer
+	들어가서 bean과 controller로 등록된것들의 정보를 볼 수 있다.
+
+프로젝트 처음생성했을 때만 프로젝트 우클릭>Maven>UpdateProject를 클릭
+
+
+JSP 프리셋 변경
+폴더 우클릭 new>jsp File>next>JSP Template>new html file > 내용 수정
+<!DOCTYPE html>
+<meta charset="${encoding}">
+
 
 
