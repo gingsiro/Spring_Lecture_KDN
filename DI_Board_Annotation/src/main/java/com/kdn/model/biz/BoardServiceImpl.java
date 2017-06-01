@@ -17,7 +17,8 @@ import com.kdn.util.PageUtility;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
-	@Autowired
+	@Autowired //생성자 앞에 속성 앞에 Setter메서드 앞에
+				//속성 앞에 사용하면 setter, 생성자 없이도 주입 가능하게 됨
 	@Qualifier("boardDao")
 	private BoardDao  dao;
 	

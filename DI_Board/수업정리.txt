@@ -58,12 +58,52 @@ bean 설정하는 법
 
 
 
+controller 역할
+	요청(.do)이 들어오면 요청에 따른 분기 혹은 그에 맞는 컨트롤러에서 역할 수행
+	해당 수행이 가능하도록 페이지 이동.
 
+	Spring에서는 요청 처리 및 이동을 다 담당해줌
+	요청 결과를 담고 페이지 이동만 해주면 됨
+	
 
+		
+			┌───────────────────────────────────────────────────────────────────────────┐
+			│ WAS						┌───────────────────────────────┐				│
+	┌───┐	│ ┌───────┐			   ┌───>┤  key		value				│				│
+	│	├─>───┤ *.do  ├┐(1)		   │   ┌─"hello.do"	MainController.hello│				│
+	└──┬┘	│ └───────┘│		   │   │└───────────────────────────────┘				│
+	client	│  web.xml │		   │   │ Handler Mapper									│
+Web browser │  		   │		   │   │┌───────────────────────────────────────────┐	│
+	   │	│		   │		   │   ││@Controller								│	│
+	   ^	│		   │(2)	   (3) │   ││public class main(){						│	│
+	   │	│	┌──────┴─────────┐ │   ││	@RequestMapping(value="hello.do",		│	│
+	   │	│	│Spring Container├<┘   ││				   method=RequestMethod.GET)│	│
+	   │	│	└───┬───────┬────┘     └────public String hello(){					│	│
+	   │	│	Dispatcher Servlet	   	│	  return "hello.jsp"					│	│
+	   │	│		│		│  		 (4)│ 	}										│	│
+	   ^	│		│		└<─────────>┤ 	...										│	│
+	   │	│		│		(5)			│}											│	│
+	   │	│	 (6)│					└───────────────────────────────────────────┘	│						
+	   │	│	┌───┴───────────┐		Controller										│
+	   └─<──────┤				│														│
+		(7)	│	└───────────────┘														│
+			│	View Resolver															│
+			└───────────────────────────────────────────────────────────────────────────┘
 
+1. web.xml에 Dispatcher Servlet등록
+2. Bean Configuration 파일을 Dispatcher Servlet에 설정 => 컨테이너 생성 및 요청에 따른 분기
+3. Controller 작성
 
+(1) hello.do 요청
+(2) Dispatcher Servlet으로 이동
+(3) Handler Mapper 조회
+(4) 조회된 url에 따른 Controller 메서드 호출
+(5) View 정보 리턴 
+(6) View Resolver를 통해 View를 찾거나 View를 생성
+(7) View 제공
 
-
+DispatcherServlet : Spring Container 생성
+					요청 작업을 처리할수 있도록 분기 
 
 
 

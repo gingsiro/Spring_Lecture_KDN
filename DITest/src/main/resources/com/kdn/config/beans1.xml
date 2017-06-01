@@ -8,7 +8,7 @@
 		class : 객체를 생성할 type 설정(추상, interface 안됨)
 		scope : 객체의 공유/사용 범위 설정
 			singleton : container가 구동 될 때 한번 생성
-						어디서든 같은 객체를 공유
+						어디서든 같은 객체를 공유 !!!!!!!
 						=> scope 생략시 기본적으로 singleton으로 설정
 			prototype : container가 구동 될 때 생성하지 않고
 						getBean(~) 할 때 마다 객체를 생성

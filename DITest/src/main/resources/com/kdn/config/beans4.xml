@@ -8,6 +8,9 @@
 		 namespace prefix를 통해 사용
 		 1. p 라는 prefix를 위한 namespace 등록
 		 2. Collection, Map, array, properties를 설정 불가
+		 
+		 p:속성명="값" 값 => primitive type String.의 값
+		 p:변수-ref = 이미 등록된 bean 주입 
 	 -->
 	 <bean id="board" class="com.kdn.model.domain.Board"
 	 	   p:id="kdn" p:title="처음하는 spring" p:regdate="2017-05-31" />

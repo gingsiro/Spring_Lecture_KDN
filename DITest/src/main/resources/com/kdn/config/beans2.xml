@@ -11,6 +11,8 @@
 			index : 인자의 순번을 지정
 					생략 시 작성한 순서대로
 			type : value로 값을 설정할 때 값의 type 을 설정  
+		
+		두가지 생성자를 혼용하지 못함.
 	 -->
 	 
 	<bean id="title" class="java.lang.String">

@@ -18,17 +18,16 @@
 		1. aop namespace 추가
 		2. <aop:config>를 이용해서 설정
 	 -->
-	 
-	 <aop:config>
-	 	<aop:aspect ref="helloAop">
-	 	<!-- pointcut을 재사용하기 위한 설정 -->
-	 	<!-- pointcut aspectj에 오류생기면 아무일도 일어나지 않음. 참조 -->
-	 		<aop:pointcut expression="execution(* com.kdn.model.biz.*ServiceImpl.search*(..))" id="helloPc" />
-	 		<aop:before method="hello" pointcut-ref="helloPc"/>
-	 	</aop:aspect>
-	 	<aop:aspect ref="timeAop">
-	 		<aop:around method="time" pointcut-ref="helloPc"/>
-	 	</aop:aspect>	 		
-	 </aop:config>
 	
+	<aop:config>
+		<aop:aspect ref="helloAop">
+		<!-- pointcut을 재사용하기 위한 설정 -->
+		<!-- pointcut aspectj에 오류생기면 아무일도 일어나지 않음. 참조 -->
+			<aop:pointcut expression="execution(* com.kdn.model.biz.*ServiceImpl.search*(..))" id="helloPc" />
+			<aop:before method="hello" pointcut-ref="helloPc"/>
+		</aop:aspect>
+		<aop:aspect ref="timeAop">
+			<aop:around method="time" pointcut-ref="helloPc"/>
+		</aop:aspect>
+	</aop:config>
 </beans>
