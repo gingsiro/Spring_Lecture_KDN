@@ -11,8 +11,8 @@ public class Board implements Serializable{
 	private String title;
 	private String regdate;
 	private String contents;
+	private List<FileBean>  files;    //조인 정보
 	private MultipartFile[] fileup;	//업로드된 파일 정보
-	private List<FileBean>  files;    //DB에 저장하는 file정보
 	public Board(){}
 	public Board(int no, String id, String title) {
 		this.no = no;
@@ -86,4 +86,6 @@ public class Board implements Serializable{
 	public void setFileup(MultipartFile[] fileup) {
 		this.fileup = fileup;
 	}
+	
+	
 }

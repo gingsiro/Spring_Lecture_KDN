@@ -13,7 +13,7 @@ $(function(){
 var count=0;   //file form index
 function addFileForm(){
 	var html="<div id='item_"+count+"'>"
-	html+="<input type='file' name='fileup' id='item"+count+"' />";
+	html+="<input type='file' name='fileup"+count+"' />";
 	html+="<input type='button' value='삭제' onclick='removeForm("+count+")'/></div>";
 	count++;
 	//html=$("#content").html()+html;

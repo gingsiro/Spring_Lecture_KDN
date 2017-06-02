@@ -152,3 +152,73 @@ JSP 프리셋 변경
 RequestMapping만 낸다.
 요청 url 메서드방식 주고  어느 페이지로 넘기는것
 
+
+─────────────────────────────────────────── 교육 마지막 날 ────────────────────────────────────────────────
+
+SqlMapConfig.xml 에 alias 등록한다.
+
+
+		   입력데이터			결과
+ /select  parameterType="" 	resultType=""  \
+/ insert  parameterMap="" 	resultMap=""    \	 
+\ delete								    /
+ \update								   /
+ 		입력데이터 타입		수행결과 받을 타입
+ 		
+ 사용하는 속성명은 다 같다.
+  
+ resultMap
+  1. 컬럼명과 속성명이 다를 때
+  2. Join 할 때
+ 
+ ex_1)  <select id="search" parameterType="int" resultType="board">
+			select * from board where no = ${no}
+		</select>
+		
+ ex_2)	<insert id="insert" parameterType="board"
+ 			insert into board(no,id,title,contents)
+ 			values(#{no:INTEGER}, #{id:VARCHAR}, #{title:VARCHAR}, #{contents:VARCHAR}, ...)  
+ 		</insert>
+ 		
+ ex_3)	<
+
+
+
+
+
+
+
+실기시험
+서비스는 주신다.
+board_query는 namespace만 주고 채워라
+BoardDaoImpl 메서드만 주고 채워라
+파일 업로드 안한다.
+root-context.xml도 줄꺼양 board_query,member_query 등록 안해줘도 될껄 ? ㅎㅎ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

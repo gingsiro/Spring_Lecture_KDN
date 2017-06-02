@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.kdn.model.domain.*"  %>
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%> 
-<jsp:useBean 	id="pageBean" class="com.kdn.model.domain.PageBean" 
+<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core"%> 
+<jsp:useBean 	id="pageBean"         class="com.kdn.model.domain.PageBean" 
 				scope="request"/>
 <!DOCTYPE html>
 <html>

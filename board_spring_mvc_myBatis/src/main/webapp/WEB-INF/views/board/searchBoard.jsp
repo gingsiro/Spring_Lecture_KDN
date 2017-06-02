@@ -50,28 +50,22 @@
 	 	    <input type ="hidden" name="query"  id="query" />
 			<table border="1" align="center">
 				<tbody>
-					<tr>
-						<td><label for="title">제목</label></td>
-					    <td>${ board.title }</td>
+					<tr><td><label for="title">제목</label></td>
+					    <td>${board.title}</td>
 					</tr>
-					<tr>
-						<td colspan="2">내용 &nbsp;&nbsp;글쓴이:${ board.id }&nbsp;&nbsp; 게시일:${ board.regdate }</td>
-					</tr>
-						
-					<tr>
-						<td colspan="2"  valign="top" height="200">
-							<pre>${ board.contents }</pre>							
-						</td>
-					</tr>
+					<tr><td colspan="2">내용 &nbsp;&nbsp;글쓴이:${board.id}
+										&nbsp;&nbsp; 게시일:${board.regdate}</td></tr>
+					<tr><td colspan="2"  valign="top" height="200">
+						<pre>${board.contents }</pre>							
+						</td></tr>
 				</tbody>
 				<tfoot>
-					<tr>
-						<td colspan="2" align="center">
-							<a href="#" onclick="listBoard('frm')">목록</a>
-							<c:if test="${ board.id == id }">
-								<a href="#" onclick="updateForm()">수정</a>
-								<a href="#" onclick="deleteBoard()">삭제</a>
-							</c:if>
+					<tr><td colspan="2" align="center">
+						<a href="#" onclick="listBoard('frm')">목록</a>
+						<c:if test="${board.id == id }">
+							<a href="#" onclick="updateForm()">수정</a>
+							<a href="#" onclick="deleteBoard()">삭제</a>
+						</c:if>
 						</td>
 					</tr>
 				</tfoot>
@@ -80,18 +74,18 @@
 	</div>
 	<div class="main" id="writeBoard" style="display:none">
 	 	<form  id="updatefrm">
-	 	    <input type ="hidden" name="no"  id="no"  value="${ board.no }"/>
-	 	    <input type ="hidden" name="id"  id="id"  value="${ board.id }"/>
+	 	    <input type ="hidden" name="no"  id="no"  value="${board.no}"/>
+	 	    <input type ="hidden" name="id"  id="id"  value="${board.id}"/>
 			<table border="1" align="center">
 				<caption>게시글 작성</caption>
 				<tbody>
 					<tr><td><label for="title">제목</label></td>
-					    <td><input type="text" name="title" id="title" value="${ board.title }"/></td>
+					    <td><input type="text" name="title" id="title" value="${board.title}"/></td>
 					</tr>
 					<tr><td colspan="2">내용</td></tr>
 					<tr><td colspan="2">
-						<textarea name="contents" id="contents" cols="30" rows="10">
-							${ board.contents }
+						<textarea name="content" id="content" cols="30" rows="10">
+							${board.contents}
 						</textarea>
 						</td></tr>
 				</tbody>
