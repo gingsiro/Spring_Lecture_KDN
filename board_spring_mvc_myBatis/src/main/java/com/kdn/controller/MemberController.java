@@ -49,7 +49,14 @@ public class MemberController {
 	public String loginMember(Model model, HttpSession session, String id, String pw) {
 		memberService.login(id, pw);
 		session.setAttribute("id", id);
-		return "index";
+		String referer = (String)session.getAttribute("referer");
+		
+		if(referer!=null){
+			session.removeAttribute("referer");
+			return "redirect:"+referer;
+		}else{
+			return "index";
+		}
 	}
 	
 	@RequestMapping(value = "logout.do", method = RequestMethod.GET)

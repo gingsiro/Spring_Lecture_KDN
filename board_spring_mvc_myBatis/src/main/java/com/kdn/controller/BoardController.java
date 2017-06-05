@@ -3,6 +3,7 @@ package com.kdn.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kdn.model.biz.BoardService;
 import com.kdn.model.domain.Board;
 import com.kdn.model.domain.PageBean;
+import com.kdn.util.LoginCheck;
 
 @Controller
 public class BoardController {
@@ -48,8 +50,11 @@ public class BoardController {
 		return "index";
 	}
 	@RequestMapping(value="insertBoardForm.do", method=RequestMethod.GET)
-	public String insertBoardForm(Model model){
-		model.addAttribute("content", "board/insertBoard.jsp");
+	public String insertBoardForm(Model model, HttpSession session){
+		if(LoginCheck.check(model, session, "insertBoardForm.do")){
+			model.addAttribute("content", "board/insertBoard.jsp");			
+		}
+//		model.addAttribute("content", "member/login.jsp");
 		return "index";
 	}
 

@@ -18,7 +18,7 @@
 	<select id="searchall" parameterType="pagebean" resultType="board">
 		select no, id, title, contents, to_char(regdate, 'yyyy-mm-dd') regdate
 		from board
-		<!-- 동적쿼리 -->
+		<!-- 동적쿼리입니다. -->
 		<!-- Where가 필요하면 Where를 붙이고 and가 필요하면 and 를 붙여줌 -->
 		<where>
 			<if test="word != null">

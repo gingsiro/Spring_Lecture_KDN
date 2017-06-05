@@ -169,7 +169,7 @@ SqlMapConfig.xml 에 alias 등록한다.
   
  resultMap
   1. 컬럼명과 속성명이 다를 때
-
+  2. Join 할 때
  
  ex_1)  <select id="search" parameterType="int" resultType="board">
 			select * from board where no = ${no}
