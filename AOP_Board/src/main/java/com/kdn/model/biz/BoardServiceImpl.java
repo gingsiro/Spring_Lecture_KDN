@@ -30,7 +30,6 @@ public class BoardServiceImpl implements BoardService {
 		this.dao = dao;
 	}
 	
-	@Override
 	public void add(Board board, String dir) {
 		Connection con = null;
 		try {
@@ -55,7 +54,6 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-	@Override
 	public void update(Board board) {
 		Connection con = null;
 		try {
@@ -70,7 +68,6 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-	@Override
 	public void remove(int no) {
 		Connection con = null;
 		try {
@@ -86,7 +83,6 @@ public class BoardServiceImpl implements BoardService {
 			DBUtil.close(con);
 		}
 	}
-	@Override
 	public Board search(int no) {
 		Connection con = null;
 		try {
@@ -99,7 +95,6 @@ public class BoardServiceImpl implements BoardService {
 			DBUtil.close(con);
 		}
 	}
-	@Override
 	public List<Board> searchAll(PageBean bean) {
 		Connection con = null;
 		try {

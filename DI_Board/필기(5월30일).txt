@@ -1,0 +1,97 @@
+내장 객체 종류 외우기!! (p.299)
+
+
+
+■ EL (p.407)
+- 출력전문
+- scope에 있는 데이터 바로 출력 가능
+- 자바스크립트, jQuery, EL 섞어서 써도 됨
+- ${EL표현식} -> 표현식이란 session.setAttribute("msg", msg) 를 했을때 앞에 "msg"를 말한다.
+- ${이름.속성명} -> Map, 일반 객체
+- ${이름['속성명']} -> 배열, Collection
+- scope을 언급안해도 EL이 알아서 데이터 찾아서 가져와줌
+- 반복문이 없다.
+- 없는 배열의 인덱스 부분을 호출해도 오류가 안난다.
+- ==로 문자열도 비교가능
+
+empty - 해당하는 객체가 비었는지 체크
+	  - 그냥은 못쓰고 if문을 제공하는 jsp같은것과 같이 써야한다.
+ex) ${empty msg}
+
+ex)
+<% String msg = (String) session.getAttribute("msg") %>
+<%= msg %>
+-> EL 사용
+${msg}
+
+
+context폴더는 lib와 web.xml을 가지고 있는 WEB-INF거나 그걸 가지고 있는 WebContent폴더를 말한다.
+
+■ JSTL (Java Standard Tag Lib)
+- apache.org에서 다운 받음 (jstl.jar, standard.jar 를 context폴더/WEB-INF/lib/에 배치)
+- 사용자 정의 태그
+- JSTL를 jsp에서 사용하기 위해 등록
+
+<%@ taglib prefix="JSTL prefix format" uri="" %>
+
+JSTL prefix format
+  core = c
+  format : fmt
+  query : sql
+  xml : xml
+
+ex)
+<%@ taglib prefix="c" uri="http://java.sum.com/jstl/core" %>
+
+▲ if 
+<c:if test="el 표현식으로 조건">
+	el 표현식이 참이면 수행되는 문장 작성
+</c:if>
+
+▲ choose ~ when ~ otherwise
+<c:choose>
+   <c:when test = "조건">
+        조건이 참이면 수행
+   </c:when>
+   <c:when test = "조건">
+        조건이 참이면 수행
+   </c:when>
+   .....
+   <c:otherwise>
+        위 모든 조건이 false이면 수행
+   </c:otherwise> 
+</c:choose>
+
+▲ <c:forEach var="변수" items="반복 돌릴 배열이나 컬렉션"
+			 begin="시작번호" end="끝번호" step="" >
+	  반복
+  </c:forEach>
+
+▲ set : 특정 scope에 객체를 저장하거나 속성값을 변경
+  -- 특정 scope에 객체를 저장 (기본 String, 연산 가능) 
+  <c:set var="변수명" scope="생략시 page" value="값" />
+
+  -- 속성값(Collection과 배열을 뺀 일반 객체, Map)을 변경
+  <c:set target="el 표현식의 이름" scope="생략시 page" property="속성명" value="값" />
+  (target에 el 표현식의 이름이 잘못되면 오류남!! el이 거의 오류 안나는데 이게 오류나는거래)
+  
+  
+  
+페이지 설계 방법
+1. index 페이지의 나머지는 include 시키고 메인 부분을 계속 include 시킬거냐 -> 편하지만 접속자 수가 많아지면 index 페이지가 제일 많이 쓰이므로 부하가 많이 걸릴 수 있다.
+2. 나머지를 include 시킨 페이지를 여러개 만들어서 분기마다 그 url로 그냥 보내버릴 것이냐
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

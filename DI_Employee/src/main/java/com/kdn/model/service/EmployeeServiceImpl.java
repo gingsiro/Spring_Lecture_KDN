@@ -14,7 +14,7 @@ import com.kdn.util.DBUtil;
 public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeDao dao = new EmployeeDaoImpl();
 	
-	@Override
+	
 	public void add(Employee emp) {
 		Connection con = null;
 		try {
@@ -34,7 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
-	@Override
+	
 	public void update(Employee emp) {
 		Connection con = null;
 		try {
@@ -54,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
-	@Override
+	
 	public void remove(String empno) {
 		Connection con = null;
 		try {
@@ -73,7 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
-	@Override
+	
 	public Employee search(String empno) {
 		Connection con = null;
 		try {
@@ -92,7 +92,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 	}
 
-	@Override
+	
 	public List<Employee> searchAll(PageBean bean) {
 		Connection con = null;
 		try {

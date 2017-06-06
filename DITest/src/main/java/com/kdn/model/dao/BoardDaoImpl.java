@@ -16,7 +16,6 @@ import com.kdn.util.DBUtil;
 
 public class BoardDaoImpl implements BoardDao {
 
-	@Override
 	public void add(Connection con, Board board) throws SQLException {
 		PreparedStatement  stmt = null;
 		try {
@@ -33,7 +32,6 @@ public class BoardDaoImpl implements BoardDao {
 			DBUtil.close(stmt);
 		}
 	}
-	@Override
 	public void update(Connection con, Board board) throws SQLException {
 		PreparedStatement  stmt = null;
 		try {
@@ -51,7 +49,6 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
-	@Override
 	public void remove(Connection con, int no) throws SQLException {
 		PreparedStatement  stmt = null;
 		try {
@@ -64,7 +61,6 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
-	@Override
 	public Board search(Connection con, int no) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -110,7 +106,6 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
-	@Override
 	public List<Board> searchAll(Connection con, PageBean bean) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -161,7 +156,6 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
-	@Override  
 	public int getCount(Connection con, PageBean bean) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -195,7 +189,6 @@ public class BoardDaoImpl implements BoardDao {
 		return 0;
 	}
 
-	@Override
 	public int getBoardNo(Connection con) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -213,7 +206,6 @@ public class BoardDaoImpl implements BoardDao {
 		return 0;
 	}
 
-	@Override
 	public void addFiles(Connection con, List<FileBean> files, int bno) throws SQLException {
 		PreparedStatement  stmt = null;
 		try {
@@ -232,7 +224,6 @@ public class BoardDaoImpl implements BoardDao {
 		}
 	}
 
-	@Override
 	public void removeFiles(Connection con, int bno) throws SQLException {
 		PreparedStatement  stmt = null;
 		try {

@@ -1,0 +1,146 @@
+■ html과 jsp는 서비스가 안되는 경우 
+1.  서버 error난 경우
+    1.1  xml 설정 오류 
+    1.2  서버 띄웠는데 또 띄운 경우 
+    1.3  서버 port 오류 (8088, 8009....)
+2.  WEB-INF 폴더 하위에 배치한 경우 
+3.  배포가 안된경우 
+     workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\컨텍스트   에 배포가 안된 경우 
+
+■ 응답코드 
+200   :  OK (응답이 된 경우)  
+300   :  redirect (응답을 직접하지 않고 다른 곳으로 전달)
+400   :  클라이언트 요청 error 
+    401   :  요청 데이타 오류 
+    404   :  요청 url에 해당하는 페이지가 없는 경우 
+    405   :  요청 방식(method)가 잘못 된 경우 
+500   :  서버 오류                
+
+■ HTTP 은 기본적으로 요청 방식(데이타 전송 방식)을 GET방식으로 사용
+1. 주소창에서 요청시 
+2. form양식에서 method방식을 생략시 
+3. <a   href="">  요청시
+4. location.href='url'로 요청시
+5. window.open( )
+
+■ 요청 데이타 추출 
+   Get, Post
+   public    String   getParameter(String name) 
+   :  요청 데이타중 name에 해당하는 value 하나를 문자열로 리턴 
+      해당 name에 데이타가 없으면 null로 리턴됨. 
+
+   public    String[ ]   getParameterValues(String name) 
+     요청 데이타중 name에 해당하는 value를 문자열 배열로 리턴 
+
+   Get 전용
+   public   String    getQueryString( )
+     url의 ? 뒤에 있는 query string을 한번에 추출하여 문자열로 리턴 
+
+   Post 전용
+   public ServletInputStream    getInputStream( )
+   => 요청 패킷을 ServletInputStream을 통해 읽어온다. 
+        (파일 처리)
+
+■ scope : 저장 공간 
+   request    (HttpServletRequest)
+     request가 유지되는 상황(forward로 페이지 이동한 상황)에서 
+     request에 정보를 저장해서 공유 할 수 있다. 
+   session     (HttpSession)
+     클라이언트가 서버에 처음 요청해서 브라우저를 종료할 때까지
+     session에 정보를 저장해서 공유 할 수 있다. 
+   application(ServletContext)
+     서버가 로딩 되면서 context를 초기화 시킴, 서버가 종료되면서
+     context를 해제시킴.
+     => 서버가 로딩된 때부터 서버가 종료될 때까지 context 내의 
+     모든 서블릿(JSP포함)이 정보를 공유할 수 있다. 
+   
+  public void setAttribute(String   name, Object value)  :  name으로 value를 저장
+  public Object getAttribute(String name): name에 해당하는 value를 추출 
+  public void removeAttribute(String name) : name에 해당하는 value를 삭제 
+                    
+■ session 만료 
+1.  브라우져를 종료
+     - 메모리에만 저장되는 JSESSIONID가 메모리에서 해제되서 
+       SESSION이 만료됨. 
+2. invalidate() : 새로운  JSESSIONID를 부여해서 기존 session에 접근 불가 
+       SESSION이 만료됨. 
+3. setMaxInactiveInterval(int sec) : 
+    클라언트가 지정된 시간동안 현재 페이지에 접근(요청)
+    하지 않으면  새로운  JSESSIONID를 부여해서 기존 session에 접근 불가 
+    SESSION이 만료됨.  
+4. web.xml에서 session-timeout을 설정 
+   클라언트가 지정된 시간동안 해당 context에 요청하지 않으면 새로운  
+   JSESSIONID를 부여해서 기존 session에 접근 불가 
+   SESSION이 만료됨.
+    <session-config>
+        <session-timeout>분</session-timeout>
+    </session-config>
+
+■ useBean
+- bean을 기본생성자로 생성
+- 지정한 scope(request | session | application)에 저장된 객체가 있으면 추출하고 없으면
+  기본 생성자로 생성해서 지정한 scope에 저장
+
+형식]
+<jsp:useBean id = "식별자" class = "패키지를 포함한 클래스 이름"
+				[scope = "page | request | session | application"]
+				[type = 'super type'] />
+  scope을 생략하면 기본적으로 page
+		page는 pageContext로 JSP페이지 내에서 공유
+  type을 생략하면 class와 동일하게 설정
+
+ex) 
+<jsp:useBean id = "members" class = "com.kdn.model.domain.Member" scope = "session" />
+==>
+<%@ page import = " com.kdn.model.domain.Member" %>
+<% Member member = (Member) session.getAttribute("member ");
+	if(member == null){
+		member = new Member();
+		session.setAttribute("member ", member);
+	}
+%>
+
+<jsp:setProperty name = "usebean 의 id" property = "속성명" value = "값"
+				param= "form 양식의 이름 />
+
+ex)
+<jsp:setProperty name = "member " property = "name" param = "name"/>
+member.setName(request.getParameter("name");
+
+<jsp:setProperty name = "usebean의 id" property="*" />
+: 모든 속성에 속성명으로 form양식의 데이터를 추출해서 (request.getParameter("속성명")) 속성에 설정
+<jsp:setProperty name = "member" property = "*" />
+member.setName(request.getParameter("name"));
+member.setId(request.getParameter("id"));
+member.setPassword(request.getParameter("password"));
+member.setEmail(request.getParameter("email"));
+
+
+
+1. session 종료 4가지
+
+2. jsp script
+
+3. scope
+   request
+   session
+   
+     공통점 : 저장 공간으로 사용됨
+     차이점
+     request : forward되는 두 페이지(servlet, jsp)간에만 공유
+     		     요청에 대한 처리가 종료되면 폐기됨.
+			   client의 요청 정보를 담고 있는 객체
+	 session : 브라우져가 종료될 때까지 공유
+	 		    사용자의 상태 정보를 저장
+	 		    
+4. forward, redirect
+   forward : request가 공유되므로 scorp에 저장된 데이터가 유지
+   			 클라이언트의 요청 정보도 유지
+   			 url은 유지
+   			 
+   redirect : 새로운 request로 요청이 되므로 scope에 저장된 데이터가 유지되지 않음
+   			  클라이언트의 요청 정보도 유지 되지 않음
+   			  url은 변경
+
+ 
+ 

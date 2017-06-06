@@ -15,7 +15,7 @@ import com.kdn.util.DBUtil;
 public class BoardServiceImpl implements BoardService {
 	BoardDao dao = new BoardDaoImpl();
 
-	@Override
+	
 	public void add(Board board) {
 
 		Connection con = null;
@@ -42,7 +42,7 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-	@Override
+	
 	public void update(Board board) {
 		Connection con = null;
 		try {
@@ -57,7 +57,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 	
-	@Override
+	
 	public void remove(int no) {
 		Connection con = null;
 		try {
@@ -75,7 +75,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-	@Override
+	
 	public Board search(int no) {
 		Connection con = null;
 		try {
@@ -90,7 +90,7 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-	@Override
+	
 	public List<Board> searchAll(PageBean bean) {
 		Connection con = null;
 		try {
