@@ -5,9 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table{
+	margin:auto;
+	width:150px;
+}
+</style>
 </head>
 <body>
-	<table align="center">
+	<table>
 		<caption>고객 정보</caption>
 		<tr><td>이  름</td><td> ${ id }  </td></tr>
 		<tr><td>비  번</td><td> ${ pw } </td></tr>

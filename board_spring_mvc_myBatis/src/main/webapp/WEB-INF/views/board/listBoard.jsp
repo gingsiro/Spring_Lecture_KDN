@@ -8,6 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table{
+	margin:auto;
+}
+.bottom{
+	margin:auto;
+	width:200px;
+}
+</style>
 <script type="text/javascript">
 	//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
 	function pagelist(cpage){
@@ -33,7 +42,7 @@
 		<form id="frm" >
 			<input type="hidden" id="pageNo"  name="pageNo"  value="1"/>
 			<input type="hidden" id="no"  name="no"/>
-			<table align="center">
+			<table>
 			<tr><th colspan="3"> 게시글 목록</th></tr>
 	  	<tr align="center">
 	  	 <td colspan="3" height="100" align="center">
@@ -59,7 +68,7 @@
 	  	  </c:forEach>
 	  	</tr>
 		</table>
-			<div class="bottom"><center>${pageBean.pagelink } </center></div>
+			<div class="bottom">${pageBean.pagelink }</div>
 		</form>
 	</div>
 </body>

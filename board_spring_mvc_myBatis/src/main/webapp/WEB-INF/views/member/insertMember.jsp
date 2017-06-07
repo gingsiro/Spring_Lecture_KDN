@@ -6,10 +6,15 @@
 <meta charset="UTF-8">
 <title>파일 업로드</title>
 <link href="../css/basic.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+table{
+	margin:auto;
+}
+</style>
 </head>
 <body>
 <form method="post" action="insertMember.do" >
-<table  align='center' >
+<table>
 	<tr><td class="caption" colspan='2'>회원가입</td></tr>
 	<tr><td class='tbasic'>아 이 디</td>
 	    <td class='tbasic'><input type='text' name='id'  id='id'></td>

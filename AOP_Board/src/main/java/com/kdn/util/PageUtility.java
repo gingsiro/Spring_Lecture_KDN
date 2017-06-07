@@ -1,7 +1,5 @@
 package com.kdn.util;
 
-import javax.print.attribute.standard.PageRanges;
-
 /**
  * JSP에서 데이터를 page navigation 형식으로 구성하기 위해 사용되는 클래스이다.
  */

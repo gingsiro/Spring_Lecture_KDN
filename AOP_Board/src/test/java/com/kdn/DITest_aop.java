@@ -7,9 +7,11 @@ import com.kdn.model.biz.BoardService;
 import com.kdn.model.biz.MemberService;
 
 public class DITest_aop {
+	private static BeanFactory container;
+
 	public static void main(String[] args) {
 
-		BeanFactory container = new ClassPathXmlApplicationContext("com/kdn/config/beans_aop.xml");
+		container = new ClassPathXmlApplicationContext("com/kdn/config/beans_aop.xml");
 		System.out.println("Container 구동....");
 		
 		BoardService boardService = container.getBean(BoardService.class);

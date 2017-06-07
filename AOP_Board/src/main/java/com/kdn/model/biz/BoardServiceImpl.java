@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.kdn.model.dao.BoardDaoImpl;
 import com.kdn.model.domain.Board;
 import com.kdn.model.domain.UpdateException;
 import com.kdn.model.domain.FileBean;
